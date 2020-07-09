@@ -1,6 +1,6 @@
 {
   "name": "local-session-storage-proxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Work with window.localStorage, window.sessionStorage as if it were an object, using ES6 Proxy",
   "main": "index.js",
   "typings": "index.d.ts",

@@ -71,7 +71,7 @@ function createProxyStorage (storage_id, keys, root = window.localStorage, stric
   if (typeof storage !== 'object' || Array.isArray(storage)) {
     throw new Error('Invalid storage');
   }
-  const cache = createObserver([], storage, storage);
+  const cache = createObserver([], storage);
   return cache;
 };
 module.exports = createProxyStorage;

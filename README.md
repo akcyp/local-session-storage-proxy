@@ -44,7 +44,7 @@ Options:
 
 ## Examples
 
-- ### SessionStorage usage
+- SessionStorage usage
 
 ```js
 const createProxyStorage = require('local-session-storage-proxy');
@@ -55,7 +55,7 @@ const storage = createProxyStorage('namespace', {
 
 ```
 
-- ### Strict mode
+- Strict mode
 
 ```js
 const createProxyStorage = require('local-session-storage-proxy');
@@ -71,7 +71,7 @@ storage.b.c = 2; // OK
 storage.b.e = 'new value?'; // ERROR!
 ```
 
-- ### No strict mode
+- No strict mode
 
 ```js
 const createProxyStorage = require('local-session-storage-proxy');

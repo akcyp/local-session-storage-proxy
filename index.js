@@ -19,11 +19,12 @@ function createProxyStorage (storage_id, keys = {}, root = window.localStorage, 
       throw new Error('ProxyStorage does not store this variable type');
     }
   };
-  const createObserver = (path, storage) => {
+  const isObject = (val) => typeof(val) === 'object' && val !== null;
+  const createObserver = (storage) => {
     for (const key in storage) {
       validateValue(storage[key]);
-      if (typeof storage[key] === 'object') {
-        storage[key] = createObserver([...path, key], storage[key]);
+      if (isObject(storage[key])) {
+        storage[key] = createObserver(storage[key]);
       }
     }
     return new Proxy(storage, {
@@ -34,15 +35,15 @@ function createProxyStorage (storage_id, keys = {}, root = window.localStorage, 
         if (strict && !(name in target) && !Array.isArray(target)) {
           throw new Error('Cannot create new property in strict mode');
         }
-        if (strict && typeof target[name] === 'object') {
+        if (strict && isObject(target[name])) {
           throw new Error('Cannot override objects in strict mode');
         }
         validateValue(value);
-        if (strict && typeof value === 'object') {
+        if (strict && isObject(value)) {
           throw new Error('Cannot create objects in strict mode');
         }
-        if (typeof value === 'object') {
-          target[name] = createObserver([...path, name], value);
+        if (isObject(value)) {
+          target[name] = createObserver(value);
         } else {
           target[name] = value;
         }
@@ -67,10 +68,10 @@ function createProxyStorage (storage_id, keys = {}, root = window.localStorage, 
     });
   };
   const storage = getStorage();
-  if (typeof storage !== 'object' || Array.isArray(storage)) {
+  if (!isObject(storage) || Array.isArray(storage)) {
     throw new Error('Invalid storage');
   }
-  const cache = createObserver([], storage);
+  const cache = createObserver(storage);
   return cache;
 };
 module.exports = createProxyStorage;

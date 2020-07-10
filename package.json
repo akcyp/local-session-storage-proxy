@@ -1,6 +1,6 @@
 {
   "name": "local-session-storage-proxy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Work with window.localStorage, window.sessionStorage as if it were an object, using ES6 Proxy",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/akcyp/local-session-storage-proxy/issues"
   },
-  "homepage": "https://github.com/akcyp/local-session-storage-proxy#readme"
+  "homepage": "https://github.com/akcyp/local-session-storage-proxy#readme",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
 }

@@ -16,3 +16,10 @@ test('strict mode', () => {
     cache.a = [];
   }).toThrow(Error);
 });
+
+test('Null', () => {
+  expect(() => {
+    cache.a = null;
+  }).not.toThrow(Error);
+  expect(cache.a).toBe(null);
+});

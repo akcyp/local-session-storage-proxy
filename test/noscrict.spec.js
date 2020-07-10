@@ -22,3 +22,14 @@ test('No errors in non-strict mode', () => {
 test('JSON.stringify equality', () => {
   expect(JSON.stringify(cache)).toBe(localStorage[key]);
 });
+
+test('Null', () => {
+  expect(() => {
+    cache.a = null;
+  }).not.toThrow(Error);
+  expect(cache.a).toBe(null);
+});
+
+test('JSON.stringify equality', () => {
+  expect(JSON.stringify(cache)).toBe(localStorage[key]);
+});

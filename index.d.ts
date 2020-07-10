@@ -1,3 +1,3 @@
 declare module "createProxyStorage" {
-  export default function createProxyStorage (storage_id: string, keys: any, root = window.localStorage, strict = false): any;
+  export default function createProxyStorage<T = {}>(storage_id: string, keys: T = {}, root = window.localStorage, strict = false): T;
 }

@@ -1,4 +1,3 @@
-
 /**
  * Work with window.localStorage, window.sessionStorage as if it were an object, using ES6 Proxy
  * @param {string} storage_id ID - key for root store
@@ -6,7 +5,7 @@
  * @param {any} root Target object, localStorage, sessionStorage or your own
  * @param {boolean} strict Set to true to prevent storage structure change
  */
-function createProxyStorage (storage_id, keys, root = window.localStorage, strict = false) {
+function createProxyStorage (storage_id, keys = {}, root = window.localStorage, strict = false) {
   const getStorage = () => {
     try {
       return JSON.parse(root[storage_id]);

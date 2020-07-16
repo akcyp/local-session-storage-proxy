@@ -80,7 +80,7 @@ const storage = createProxyStorage('namespace', {
   b: {
     c: 1
   }
-}, window.localStorage, true);
+}, window.localStorage, false);
 
 storage.b = {}; // OK
 storage.b.c = 2; // OK
